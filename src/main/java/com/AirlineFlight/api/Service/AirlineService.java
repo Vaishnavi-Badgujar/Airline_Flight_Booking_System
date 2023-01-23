@@ -38,9 +38,6 @@ public class AirlineService {
 			
 		}
 
-
-
-
 	 public void deleteAirlineById(Airline airline) {
 		 airlineRepository.delete(airline);
 		// TODO Auto-generated method stub
