@@ -3,33 +3,40 @@ package com.AirlineFlight.api.Service;
 import java.util.List;
 import java.util.Optional;
 
-import com.AirlineFlight.api.model.Flyer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.AirlineFlight.api.data.FlyerRepository;
+import com.AirlineFlight.api.model.Flyer;
+@Service
 public class FlyerService {
+	
+	@Autowired
+	private FlyerRepository flyerRepository;
 
 	public void insertFlyer(Flyer flyer) {
-		// TODO Auto-generated method stub
+		 flyerRepository.save(flyer);
 		
 	}
 
 	public Optional<Flyer> getflyerById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Flyer> optional = flyerRepository.findById(id);
+		return optional;
 	}
 
 	public void updateFlyerById(Flyer flyer) {
-		// TODO Auto-generated method stub
+		flyerRepository.save(flyer);
 		
 	}
 
 	public void deleteFlyerById(Flyer flyer) {
-		// TODO Auto-generated method stub
+		flyerRepository.delete(flyer);
 		
 	}
 
 	public List<Flyer> getAllflyers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return flyerRepository.findAll();
 	}
 
 
