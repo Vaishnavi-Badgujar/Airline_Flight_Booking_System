@@ -3,34 +3,50 @@ package com.AirlineFlight.api.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.AirlineFlight.api.data.AirlineRepository;
 import com.AirlineFlight.api.model.Airline;
 
+@Service
 public class AirlineService {
+	
+	@Autowired
+	private AirlineRepository airlineRepository;
 
-	public void insertAirline(Airline airline) {
+	 public void insertAirline(Airline airline) {
+		 airlineRepository.save(airline);
 		// TODO Auto-generated method stub
 		
-	}
+	 }
 
-	public List<Airline> getAllAirlines() {
+	 public List<Airline> getAllAirlines() {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		 return airlineRepository.findAll();
+	 }
 
-	public Optional<Airline> getAirlineById(int id) {
+	 public Optional<Airline> getAirlineById(int id) {
+		 Optional<Airline> optional = airlineRepository.findById(id);
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return optional;
+	 }
+	 
+	 public void updateAirlineById(Airline airline) {
+		 airlineRepository.save(airline);
+			// TODO Auto-generated method stub
+			
+		}
 
-	public void updateAirlineById(Airline airline) {
+
+
+
+	 public void deleteAirlineById(Airline airline) {
+		 airlineRepository.delete(airline);
 		// TODO Auto-generated method stub
 		
-	}
+	 }
 
-	public void deleteAirlineById(Airline airline) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 }

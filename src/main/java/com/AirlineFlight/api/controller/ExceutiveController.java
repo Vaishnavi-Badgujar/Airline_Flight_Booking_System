@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.AirlineFlight.api.Service.ExecutiveService;
 import com.AirlineFlight.api.model.Executive;
-import com.bootapp.rest.restapp.model.Instructor;
 
 
 
