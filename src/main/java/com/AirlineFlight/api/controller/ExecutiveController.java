@@ -16,9 +16,10 @@ import com.AirlineFlight.api.model.Executive;
 
 
 
+
 @RestController
 @RequestMapping("/api/executive")
-public class ExceutiveController {
+public class ExecutiveController {
 	
 	
 	@Autowired
