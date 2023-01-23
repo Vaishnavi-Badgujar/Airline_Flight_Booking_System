@@ -34,7 +34,7 @@ public class FlyerFlightController {
 	@PostMapping("/add/{flyerId}/{flightId}")
 	public ResponseEntity<String> assignFlyerToFlight(@RequestBody FlyerFlight flyerFlight,
 			@PathVariable("flightId") int flightId, @PathVariable("flyerId") int flyerId) {
-		Optional<Flight> optionalFlight = flightService.getFlyerByID(flyerId);
+		Optional<Flight> optionalFlight = flightService.getFlightById(flightId);
 
 		if (!optionalFlight.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Flight ID Given");

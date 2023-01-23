@@ -1,11 +1,11 @@
 package com.AirlineFlight.api.Service;
 
-<<<<<<< HEAD
+
 import java.util.Optional;
 
 import com.AirlineFlight.api.model.Flight;
 
-=======
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ import com.AirlineFlight.api.data.FlightRepository;
 import com.AirlineFlight.api.model.Flight;
 
 @Service
->>>>>>> 72a6f3bf99192d61f529c2dcdc43a0929d119023
+
 public class FlightService {
 	
 	@Autowired
@@ -51,14 +51,6 @@ public class FlightService {
 		
 	}
 
-	public Optional<Flight> getFlyerByID(int flyerId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Optional<Flight> getFlyerByID(int flyerId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

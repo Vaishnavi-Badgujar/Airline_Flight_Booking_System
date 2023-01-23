@@ -1,11 +1,11 @@
 package com.AirlineFlight.api.Service;
 
-<<<<<<< HEAD
+
 import java.util.Optional;
 
 import com.AirlineFlight.api.model.Flyer;
 
-=======
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.AirlineFlight.api.data.FlyerRepository;
 import com.AirlineFlight.api.model.Flyer;
 @Service
->>>>>>> 72a6f3bf99192d61f529c2dcdc43a0929d119023
+
 public class FlyerService {
 	
 	@Autowired
