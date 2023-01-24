@@ -23,7 +23,10 @@ public class Flight {
 	public Date departureDate;
 	
 	// Public Time departureTime;
-
+public Flight()
+{
+	
+}
 
 	public Flight(int flightId, String flightName, String departureCity, String arrivalCity, Date departureDate) {
 		super();
