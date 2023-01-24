@@ -62,15 +62,14 @@ public class FlightController {
 		flightService.updateFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is updated");
 		}
-<<<<<<< HEAD
+
 	
 	//Delete Flight API
 	
-	public ResponseEntity<String> deleteFlightById(@PathVariable("id") int id,@RequestBody Flight flight) {
-=======
+	
 	@DeleteMapping("/delete/{flightId}")
 	public ResponseEntity<String> deleteFlightById(@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
->>>>>>> 66e16d9ede8457bf05e141b7e03b53d3ad789485
+
 		flightService.deleteFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is Deleted");
 	}
