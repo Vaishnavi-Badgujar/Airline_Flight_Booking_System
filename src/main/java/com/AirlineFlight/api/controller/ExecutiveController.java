@@ -17,12 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AirlineFlight.api.Service.ExecutiveService;
 import com.AirlineFlight.api.Service.FlightService;
 import com.AirlineFlight.api.model.Executive;
+<<<<<<< HEAD:src/main/java/com/AirlineFlight/api/controller/ExceutiveController.java
 import com.AirlineFlight.api.model.Flight;
 
 @RestController
 @RequestMapping("/api/executive")
 public class ExceutiveController {
 
+=======
+
+
+
+
+@RestController
+@RequestMapping("/api/executive")
+public class ExecutiveController {
+	
+	
+>>>>>>> 13127e211d948a7dd9cdb78ebcd17f9404ea6a1a:src/main/java/com/AirlineFlight/api/controller/ExecutiveController.java
 	@Autowired
 	private ExecutiveService executiveService;
 
