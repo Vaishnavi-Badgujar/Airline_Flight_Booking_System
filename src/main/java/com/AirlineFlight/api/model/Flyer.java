@@ -7,12 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "flight")
 public class Flyer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int flyerId;
 
 	private String firstName;
 	
@@ -25,11 +24,11 @@ public class Flyer {
 	private String phone;
 
 	public int getId() {
-		return id;
+		return flyerId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int flyerId) {
+		this.flyerId = flyerId;
 	}
 
 	public String getFirstName() {
@@ -74,7 +73,7 @@ public class Flyer {
 
 	@Override
 	public String toString() {
-		return "Flyer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
+		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
 				+ ", email=" + email + ", phone=" + phone + "]";
 	}
 	
