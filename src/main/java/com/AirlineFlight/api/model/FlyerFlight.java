@@ -2,6 +2,7 @@ package com.AirlineFlight.api.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,22 +21,13 @@ public class FlyerFlight {
 
 	@ManyToOne
 	private Flyer flyer;
-
-	private int flightId;
-	private int flyerId;
+	
+    @Column(name="departure_Date")
 	private Date departureDate;
+    
+    @Column(name="couponUsed")
 	private boolean CouponUsed;
-	public FlyerFlight(int id, Flight flight, Flyer flyer, int flightId, int flyerId, Date departureDate,
-			boolean couponUsed) {
-		super();
-		this.id = id;
-		this.flight = flight;
-		this.flyer = flyer;
-		this.flightId = flightId;
-		this.flyerId = flyerId;
-		this.departureDate = departureDate;
-		CouponUsed = couponUsed;
-	}
+    
 	public int getId() {
 		return id;
 	}
@@ -54,18 +46,6 @@ public class FlyerFlight {
 	public void setFlyer(Flyer flyer) {
 		this.flyer = flyer;
 	}
-	public int getFlightId() {
-		return flightId;
-	}
-	public void setFlightId(int flightId) {
-		this.flightId = flightId;
-	}
-	public int getFlyerId() {
-		return flyerId;
-	}
-	public void setFlyerId(int flyerId) {
-		this.flyerId = flyerId;
-	}
 	public Date getDepartureDate() {
 		return departureDate;
 	}
@@ -78,6 +58,8 @@ public class FlyerFlight {
 	public void setCouponUsed(boolean couponUsed) {
 		CouponUsed = couponUsed;
 	}
-
+	
+	
+	
 	
 }
