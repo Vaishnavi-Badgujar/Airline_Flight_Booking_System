@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AirlineFlight.api.Service.FlyerService;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 21697eabad812535558722d768682664d1d97313
 import com.AirlineFlight.api.model.Flyer;
 
 
