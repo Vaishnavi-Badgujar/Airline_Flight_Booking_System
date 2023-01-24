@@ -14,46 +14,55 @@ public class Flight {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int id;
+	public int flightId;
 
-	@Column(name="flight_Name")
+	
 	public String flightName;
 
-	@Column(name="departure_City")
-	public String departureCity;
 	
-    @Column(name="arrival_City")
+	public String departureCity;
+
 	public String arrivalCity;
     
-    @Column(name="departure_Date")
+  
 	public Date departureDate;
-<<<<<<< HEAD
+
     
-    @Column(name="flight_Id")
-    public String flightId;
+   
+  
     
-    @ManyToOne
+    public Flight() {
+		super();
+	}
+
+	public Flight(int flightId, String flightName, String departureCity, String arrivalCity, Date departureDate,
+			Executive executive, Airline airline) {
+		super();
+		this.flightId = flightId;
+		this.flightName = flightName;
+		this.departureCity = departureCity;
+		this.arrivalCity = arrivalCity;
+		this.departureDate = departureDate;
+		this.executive = executive;
+		this.airline = airline;
+	}
+
+	@ManyToOne
     private Executive executive;
     
     @ManyToOne
     private Airline airline;
-=======
+
 	
 	// Public Time departureTime;
 
-public Flight()
-{
 
-	
-}
->>>>>>> 9446f0b28d9540cdfa1058974ee8f6b938658221
-
-	public int getId() {
-		return id;
+	public int getflightId() {
+		return flightId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int flightId) {
+		this.flightId = flightId;
 	}
 
 	public String getFlightName() {
@@ -104,16 +113,5 @@ public Flight()
 		this.airline = airline;
 	}
 
-	public String getFlightId() {
-		return flightId;
-	}
-
-	public void setFlightId(String flightId) {
-		this.flightId = flightId;
-	}
-
-	
-    
-	
 
 }

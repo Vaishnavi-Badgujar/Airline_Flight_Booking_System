@@ -14,6 +14,8 @@ public class Executive {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	
+	@Column (name="Executive_id")
 	private int id;
 	
 	@Column (name = "executive_name")
