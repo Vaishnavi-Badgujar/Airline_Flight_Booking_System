@@ -33,7 +33,8 @@ public class FlyerFlightController {
 
 	@PostMapping("/add/{flyerId}/{flightId}")
 	public ResponseEntity<String> assignFlyerToFlight(@RequestBody FlyerFlight flyerFlight,
-			@PathVariable("flightId") int flightId, @PathVariable("flyerId") int flyerId) {
+													@PathVariable("flightId") int flightId, 
+													@PathVariable("flyerId") int flyerId) {
 		Optional<Flight> optionalFlight = flightService.getFlightById(flightId);
 
 		if (!optionalFlight.isPresent())
@@ -54,6 +55,7 @@ public class FlyerFlightController {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Flyer assigned to Flight");
 
 	}
+
 	
 	
 }
