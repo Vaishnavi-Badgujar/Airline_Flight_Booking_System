@@ -38,21 +38,21 @@ public class FlyerController {
 	@GetMapping("/one/{id}")
 	public ResponseEntity<Object> getFlyerById(@PathVariable("flyerId")int flyerId){
 		Optional<Flyer> optional=flyerService.getflyerById(flyerId);
-		if(!optional.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
+		if(optional == null)
+			return ResponseEntity.status(HttpStatus.OK).body("Invalid ID given");
 		
 		Flyer flyer = optional.get();
 		return ResponseEntity.status(HttpStatus.OK).body(flyer);
 	}
 	//Get All Api
 	@GetMapping("/getall")
-	public List<Flyer>getAllFlyer(){
+	public List<Flyer> getAllFlyer(){
 		List<Flyer> list = flyerService.getAllflyers();
 		return list;
 	}
 	//PUT Api
 	@PutMapping("/one/{flyerId}")
-	public ResponseEntity<String>UpdateFlyerById(@PathVariable("flyerId") int flyerId,@RequestBody Flyer flyer){
+	public ResponseEntity<String> updateFlyerById(@PathVariable("flyerId") int flyerId,@RequestBody Flyer flyer){
 		flyerService.updateFlyerById(flyer);
 		return ResponseEntity.status(HttpStatus.OK).body("Flyer is Updated");
 	}
