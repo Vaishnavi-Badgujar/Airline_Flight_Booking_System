@@ -44,9 +44,9 @@ public class FlightController {
 	
 	// Get Flight by ID
 	
-	@GetMapping("/one/{id}")
-	public ResponseEntity<Object> getFlightById(@PathVariable("id") int id) {
-		Optional<Flight> optional = flightService.getFlightById(id);
+	@GetMapping("/one/{flightId}")
+	public ResponseEntity<Object> getFlightById(@PathVariable("flightId") int flightId) {
+		Optional<Flight> optional = flightService.getFlightById(flightId);
 		if (!optional.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
 		
@@ -57,15 +57,20 @@ public class FlightController {
 	
 	//put Flight API
 	
-	@PutMapping("/one/{id}")
-	public ResponseEntity<String> updateFlightById (@PathVariable("id") int id,@RequestBody Flight flight) {
+	@PutMapping("/one/{flightId}")
+	public ResponseEntity<String> updateFlightById (@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
 		flightService.updateFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is updated");
 		}
+<<<<<<< HEAD
 	
 	//Delete Flight API
 	
 	public ResponseEntity<String> deleteFlightById(@PathVariable("id") int id,@RequestBody Flight flight) {
+=======
+	@DeleteMapping("/delete/{flightId}")
+	public ResponseEntity<String> deleteFlightById(@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
+>>>>>>> 66e16d9ede8457bf05e141b7e03b53d3ad789485
 		flightService.deleteFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is Deleted");
 	}
