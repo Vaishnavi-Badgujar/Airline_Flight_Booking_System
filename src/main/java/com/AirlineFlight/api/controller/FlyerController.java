@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AirlineFlight.api.Service.FlyerService;
-import com.AirlineFlight.api.model.Airline;
 import com.AirlineFlight.api.model.Flyer;
 
 
