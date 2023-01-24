@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AirlineFlight.api.Service.AirlineService;
+import com.AirlineFlight.api.Service.ExecutiveService;
 import com.AirlineFlight.api.Service.FlightService;
 import com.AirlineFlight.api.model.Flight;
 
@@ -24,6 +26,12 @@ public class FlightController {
 	
 	@Autowired
 	private FlightService flightService;
+	
+	@Autowired
+	private ExecutiveService executiveService;
+	
+	@Autowired
+	private AirlineService airlineService;
 	
 	// Flight POST API
 	
