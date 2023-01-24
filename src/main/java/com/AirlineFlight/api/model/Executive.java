@@ -17,17 +17,27 @@ public class Executive {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="Executive_id")
 	private int id;
+	
+	@Column (name = "executive_name")
+	 private String name;
 
-	@Enumerated(EnumType.STRING)
-	private TicketStatus ticketStatus;
-
-	public TicketStatus getTicketStatus() {
-		return ticketStatus;
+	public int getId() {
+		return id;
 	}
 
-	public void setTicketStatus(TicketStatus ticketStatus) {
-		this.ticketStatus = ticketStatus;
+	public void setId(int id) {
+		this.id = id;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 	
 	
 
