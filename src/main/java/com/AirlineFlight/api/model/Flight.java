@@ -23,8 +23,10 @@ public class Flight {
 	public Date departureDate;
 	
 	// Public Time departureTime;
+
 public Flight()
 {
+
 	
 }
 
