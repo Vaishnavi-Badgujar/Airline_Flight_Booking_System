@@ -36,8 +36,8 @@ public class FlyerController {
 	}
 	//Get By Id
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Object> getFlyerById(@PathVariable("id")int id){
-		Optional<Flyer> optional=flyerService.getflyerById(id);
+	public ResponseEntity<Object> getFlyerById(@PathVariable("flyerId")int flyerId){
+		Optional<Flyer> optional=flyerService.getflyerById(flyerId);
 		if(!optional.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
 		
@@ -51,15 +51,16 @@ public class FlyerController {
 		return list;
 	}
 	//PUT Api
-	@PutMapping("/one/{id}")
-	public ResponseEntity<String>UpdateFlyerById(@PathVariable("id") int id,@RequestBody Flyer flyer){
+	@PutMapping("/one/{flyerId}")
+	public ResponseEntity<String>UpdateFlyerById(@PathVariable("flyerId") int flyerId,@RequestBody Flyer flyer){
 		flyerService.updateFlyerById(flyer);
 		return ResponseEntity.status(HttpStatus.OK).body("Flyer is Updated");
 	}
 	
 	
 	//DELETE Api
-	public ResponseEntity<String> deleteFlyerById(@PathVariable("id") int id,@RequestBody Flyer flyer){
+	@DeleteMapping("/delete/{flyerId}")
+	public ResponseEntity<String> deleteFlyerById(@PathVariable("flyerId") int flyerId,@RequestBody Flyer flyer){
 		flyerService.deleteFlyerById(flyer);
 		return ResponseEntity.status(HttpStatus.OK).body("Flyer is Deleted");
 		}
