@@ -1,9 +1,9 @@
 package com.AirlineFlight.api.data;
 
-import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.AirlineFlight.api.model.Flight;
 
-public interface FlightRepository extends JpaRepositoryImplementation<Flight, Integer>{
+public interface FlightRepository extends JpaRepository<Flight, Integer>{
 
 }
