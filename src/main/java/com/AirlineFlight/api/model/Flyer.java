@@ -11,7 +11,7 @@ public class Flyer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int flyerId;
 
 	private String firstName;
 	
@@ -23,7 +23,7 @@ public class Flyer {
 	
 	private String phone;
 
-	private String FlyerId;
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -66,26 +66,22 @@ public class Flyer {
 	}
 
 	public int getId() {
-		return id;
+		return flyerId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFlyerId() {
-		return FlyerId;
-	}
-
-	public void setFlyerId(String flyerId) {
-		FlyerId = flyerId;
+	public void setId(int flyerId) {
+		this.flyerId = flyerId;
 	}
 
 	@Override
 	public String toString() {
-		return "Flyer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
-				+ ", email=" + email + ", phone=" + phone + ", FlyerId=" + FlyerId + "]";
+		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
+				+ ", email=" + email + ", phone=" + phone + "]";
 	}
+
+	
+
+	
 
 	
 
