@@ -35,7 +35,7 @@ public class FlyerController {
 		
 	}
 	//Get By Id
-	@GetMapping("/one/{id}")
+	@GetMapping("/one/{flyerId}")
 	public ResponseEntity<Object> getFlyerById(@PathVariable("flyerId")int flyerId){
 		Optional<Flyer> optional=flyerService.getflyerById(flyerId);
 		if(optional == null)
