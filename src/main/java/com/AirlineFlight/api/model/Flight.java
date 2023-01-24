@@ -23,7 +23,12 @@ public class Flight {
 	public Date departureDate;
 	
 	// Public Time departureTime;
+<<<<<<< HEAD
 public Flight() {
+=======
+public Flight()
+{
+>>>>>>> 0337ad40e12f5eb6641d2b38e6630add76590f5f
 	
 }
 

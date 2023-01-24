@@ -21,7 +21,7 @@ import com.AirlineFlight.api.model.Flyer;
 
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/flyer")
 public class FlyerController {
 	
 	@Autowired
