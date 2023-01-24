@@ -27,7 +27,7 @@ public class Flight {
     
     @Column(name="departure_Date")
 	public Date departureDate;
-<<<<<<< HEAD
+
     
     @Column(name="flight_Id")
     public String flightId;
@@ -37,16 +37,10 @@ public class Flight {
     
     @ManyToOne
     private Airline airline;
-=======
-	
-	// Public Time departureTime;
-
-public Flight()
-{
 
 	
-}
->>>>>>> 9446f0b28d9540cdfa1058974ee8f6b938658221
+	// Public Time departureTime
+
 
 	public int getId() {
 		return id;
