@@ -53,12 +53,14 @@ public class Flight {
     @ManyToOne
     private Airline airline;
 
+
 	
 	// Public Time departureTime;
 
 
 	public int getFlightId() {
 		return flightId;
+
 	}
 
 	public void setFlightId(int flightId) {
