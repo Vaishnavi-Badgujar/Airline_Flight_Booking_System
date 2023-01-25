@@ -5,30 +5,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 public class Flyer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int flyerId;
 
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String middleName;
-	
+
 	private String email;
-	
+
 	private String phone;
 
-	
-	public int getId() {
+	public int getFlyerId() {
 		return flyerId;
 	}
 
-	public void setId(int flyerId) {
+	public void setFlyerId(int flyerId) {
 		this.flyerId = flyerId;
 	}
 
@@ -72,17 +70,10 @@ public class Flyer {
 		this.phone = phone;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
-				+ ", email=" + email + ", phone=" + phone + "]";
+		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
+				+ middleName + ", email=" + email + ", phone=" + phone + "]";
 	}
-
-	
-
-
-	
 
 }

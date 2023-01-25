@@ -16,27 +16,19 @@ public class Flight {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int flightId;
 
-	
 	public String flightName;
 
-	
 	public String departureCity;
 
 	public String arrivalCity;
-    
-  
+
 	public Date departureDate;
 
-    
-   
-  
-    
-    public Flight() {
-		super();
+	public Flight() {
+
 	}
 
-	public Flight(int flightId, String flightName, String departureCity, String arrivalCity, Date departureDate,
-			Executive executive, Airline airline) {
+	public Flight(int flightId, String flightName, String departureCity, String arrivalCity, Date departureDate) {
 		super();
 		this.flightId = flightId;
 		this.flightName = flightName;
@@ -48,22 +40,22 @@ public class Flight {
 	}
 
 	@ManyToOne
-    private Executive executive;
-    
-    @ManyToOne
-    private Airline airline;
+	private Executive executive;
+
+	@ManyToOne
+	private Airline airline;
+
+	// Public Time departureTime
 
 
-	
-	// Public Time departureTime;
 
 
-	public int getflightId() {
+	public int getFlightId() {
 		return flightId;
 
 	}
 
-	public void setId(int flightId) {
+	public void setFlightId(int flightId) {
 		this.flightId = flightId;
 	}
 
@@ -114,6 +106,5 @@ public class Flight {
 	public void setAirline(Airline airline) {
 		this.airline = airline;
 	}
-
 
 }
