@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+
 
 @Entity
 public class Flyer {
@@ -24,6 +24,13 @@ public class Flyer {
 	private String phone;
 
 	
+	public int getId() {
+		return flyerId;
+	}
+
+	public void setId(int flyerId) {
+		this.flyerId = flyerId;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -65,23 +72,13 @@ public class Flyer {
 		this.phone = phone;
 	}
 
-	public int getId() {
-		return flyerId;
-	}
 
-	public void setId(int flyerId) {
-		this.flyerId = flyerId;
-	}
 
 	@Override
 	public String toString() {
 		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
 				+ ", email=" + email + ", phone=" + phone + "]";
 	}
-
-	
-
-	
 
 	
 

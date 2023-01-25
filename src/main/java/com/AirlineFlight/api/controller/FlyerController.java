@@ -35,11 +35,13 @@ public class FlyerController {
 		
 	}
 	//Get By Id
+
 	@GetMapping("/one/{flyerId}")
+
 	public ResponseEntity<Object> getFlyerById(@PathVariable("flyerId")int flyerId){
 		Optional<Flyer> optional=flyerService.getflyerById(flyerId);
-		if(optional == null)
-			return ResponseEntity.status(HttpStatus.OK).body("Invalid ID given");
+		if(!optional.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
 		
 		Flyer flyer = optional.get();
 		return ResponseEntity.status(HttpStatus.OK).body(flyer);
@@ -59,7 +61,7 @@ public class FlyerController {
 	
 	
 	//DELETE Api
-	@DeleteMapping("/delete/{flyerId}")
+	@DeleteMapping("/{flyerId}")
 	public ResponseEntity<String> deleteFlyerById(@PathVariable("flyerId") int flyerId,@RequestBody Flyer flyer){
 		flyerService.deleteFlyerById(flyer);
 		return ResponseEntity.status(HttpStatus.OK).body("Flyer is Deleted");
