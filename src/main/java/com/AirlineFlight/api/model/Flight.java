@@ -57,11 +57,11 @@ public class Flight {
 	// Public Time departureTime;
 
 
-	public int getflightId() {
+	public int getFlightId() {
 		return flightId;
 	}
 
-	public void setId(int flightId) {
+	public void setFlightId(int flightId) {
 		this.flightId = flightId;
 	}
 

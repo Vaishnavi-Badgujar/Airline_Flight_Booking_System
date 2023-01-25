@@ -4,10 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.Airline.Flight.api.enums.TicketStatus;
+
+
 
 @Entity
 public class FlyerFlight {
@@ -15,6 +21,9 @@ public class FlyerFlight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+    @Enumerated(EnumType.STRING)
+    private TicketStatus status;
 
 	@ManyToOne
 	private Flight flight;
@@ -57,6 +66,12 @@ public class FlyerFlight {
 	}
 	public void setCouponUsed(boolean couponUsed) {
 		CouponUsed = couponUsed;
+	}
+	public TicketStatus getStatus() {
+		return status;
+	}
+	public void setStatus(TicketStatus status) {
+		this.status = status;
 	}
 	
 	
