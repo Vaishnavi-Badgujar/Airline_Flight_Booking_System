@@ -15,14 +15,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 //import com.AirlineFlight.api.Service.AirlineService;
 //import com.AirlineFlight.api.Service.ExecutiveService;
+=======
+import com.AirlineFlight.api.Service.AirlineService;
+import com.AirlineFlight.api.Service.ExecutiveService;
+>>>>>>> c632cf98b730533245d19590fbb63b14a15cd94c
 import com.AirlineFlight.api.Service.FlightService;
+import com.AirlineFlight.api.model.Airline;
+import com.AirlineFlight.api.model.Executive;
 import com.AirlineFlight.api.model.Flight;
 
 @RestController
 @RequestMapping("/api/flight")
 public class FlightController {
+	@Autowired
+	private AirlineService airlineService;
+	
+	@Autowired
+	private ExecutiveService executiveService;
 	
 	@Autowired
 	private FlightService flightService;
@@ -40,6 +52,26 @@ public class FlightController {
 		flightService.insertFlight(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight Posted in DB");
 		
+	}
+	
+	@PostMapping("/add/{aid}/{eid}")
+	public ResponseEntity<String> postFlight(@PathVariable("aid") int aid, @PathVariable("eid") int eid,@RequestBody Flight flight) {
+		Optional<Airline> optionalP = airlineService.getAirlineById(aid);
+		if (!optionalP.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Airline Id");
+
+		Optional<Executive> optionalD = executiveService.getExecutiveById(eid);
+		if (!optionalD.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Executive id");
+
+		Airline airline = optionalP.get();
+		Executive executive = optionalD.get();
+
+		flight.setAirline(airline);
+		flight.setExecutive(executive);
+		flightService.insertFlight(flight);
+		return ResponseEntity.status(HttpStatus.OK).body("Flight added in DB");
+
 	}
 	
 	// Flight ADD API

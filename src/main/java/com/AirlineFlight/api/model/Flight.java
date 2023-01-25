@@ -47,6 +47,11 @@ public class Flight {
 
 	// Public Time departureTime
 
+<<<<<<< HEAD
+=======
+
+	
+>>>>>>> c632cf98b730533245d19590fbb63b14a15cd94c
 	// Public Time departureTime;
 
 	public int getFlightId() {
