@@ -16,62 +16,45 @@ public class Flight {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int flightId;
 
-	
 	public String flightName;
 
-	
 	public String departureCity;
 
 	public String arrivalCity;
-    
-  
+
 	public Date departureDate;
 
-    
-   
-  
-    
-    public Flight() {
-		super();
+	public Flight() {
+
 	}
 
-	public Flight(int flightId, String flightName, String departureCity, String arrivalCity, Date departureDate,
-			Executive executive, Airline airline) {
+	public Flight(int flightId, String flightName, String departureCity, String arrivalCity, Date departureDate) {
 		super();
 		this.flightId = flightId;
 		this.flightName = flightName;
 		this.departureCity = departureCity;
 		this.arrivalCity = arrivalCity;
 		this.departureDate = departureDate;
-		this.executive = executive;
-		this.airline = airline;
+//		this.executive = executive;
+//		this.airline = airline;
 	}
 
-	@ManyToOne
-    private Executive executive;
-    
-    @ManyToOne
-    private Airline airline;
+//	@ManyToOne
+//	private Executive executive;
+//
+//	@ManyToOne
+//	private Airline airline;
 
-
-	
 	// Public Time departureTime
 
-
-	public int getId() {
-		return flightId;
-
-	}
-	
 	// Public Time departureTime;
 
-
-	public int getflightId() {
+	public int getFlightId() {
 		return flightId;
 
 	}
 
-	public void setId(int flightId) {
+	public void setFlightId(int flightId) {
 		this.flightId = flightId;
 	}
 
@@ -107,21 +90,20 @@ public class Flight {
 		this.departureDate = departureDate;
 	}
 
-	public Executive getExecutive() {
-		return executive;
-	}
-
-	public void setExecutive(Executive executive) {
-		this.executive = executive;
-	}
-
-	public Airline getAirline() {
-		return airline;
-	}
-
-	public void setAirline(Airline airline) {
-		this.airline = airline;
-	}
-
+//	public Executive getExecutive() {
+//		return executive;
+//	}
+//
+//	public void setExecutive(Executive executive) {
+//		this.executive = executive;
+//	}
+//
+//	public Airline getAirline() {
+//		return airline;
+//	}
+//
+//	public void setAirline(Airline airline) {
+//		this.airline = airline;
+//	}
 
 }

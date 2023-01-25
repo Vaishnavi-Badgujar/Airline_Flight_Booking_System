@@ -65,11 +65,11 @@ public class Flyer {
 		this.phone = phone;
 	}
 
-	public int getId() {
+	public int getFlyerId() {
 		return flyerId;
 	}
 
-	public void setId(int flyerId) {
+	public void setFlyerId(int flyerId) {
 		this.flyerId = flyerId;
 	}
 

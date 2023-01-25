@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.AirlineFlight.api.Service.AirlineService;
-import com.AirlineFlight.api.Service.ExecutiveService;
+//import com.AirlineFlight.api.Service.AirlineService;
+//import com.AirlineFlight.api.Service.ExecutiveService;
 import com.AirlineFlight.api.Service.FlightService;
 import com.AirlineFlight.api.model.Flight;
 
@@ -27,12 +27,12 @@ public class FlightController {
 	@Autowired
 	private FlightService flightService;
 	
-	@Autowired
-	private ExecutiveService executiveService;
+	//@Autowired
+	//private ExecutiveService executiveService;
 	
-	@Autowired
-	private AirlineService airlineService;
-	
+//	@Autowired
+//	private AirlineService airlineService;
+//	
 	// Flight POST API
 	
 	@PostMapping("/add")
@@ -52,9 +52,9 @@ public class FlightController {
 	
 	// Get Flight by ID
 	
-	@GetMapping("/one/{id}")
-	public ResponseEntity<Object> getFlightById(@PathVariable("id") int id) {
-		Optional<Flight> optional = flightService.getFlightById(id);
+	@GetMapping("/one/{flightId}")
+	public ResponseEntity<Object> getFlightById(@PathVariable("flightId") int flightId) {
+		Optional<Flight> optional = flightService.getFlightById(flightId);
 		if (!optional.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
 		
@@ -65,8 +65,8 @@ public class FlightController {
 	
 	//put Flight API
 	
-	@PutMapping("/one/{id}")
-	public ResponseEntity<String> updateFlightById (@PathVariable("id") int id,@RequestBody Flight flight) {
+	@PutMapping("/one/{flightId}")
+	public ResponseEntity<String> updateFlightById (@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
 		flightService.updateFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is updated");
 		}
@@ -75,8 +75,8 @@ public class FlightController {
 	//Delete Flight API
 	
 	
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteFlightById(@PathVariable("id") int id,@RequestBody Flight flight) {
+	@DeleteMapping("/delete/{flightId}")
+	public ResponseEntity<String> deleteFlightById(@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
 
 		flightService.deleteFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is Deleted");
