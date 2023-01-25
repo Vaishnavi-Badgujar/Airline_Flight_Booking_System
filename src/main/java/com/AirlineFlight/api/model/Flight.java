@@ -35,24 +35,20 @@ public class Flight {
 		this.departureCity = departureCity;
 		this.arrivalCity = arrivalCity;
 		this.departureDate = departureDate;
-//		this.executive = executive;
-//		this.airline = airline;
+		this.executive = executive;
+		this.airline = airline;
 	}
 
-//	@ManyToOne
-//	private Executive executive;
-//
-//	@ManyToOne
-//	private Airline airline;
+	@ManyToOne
+	private Executive executive;
+
+	@ManyToOne
+	private Airline airline;
 
 	// Public Time departureTime
 
-<<<<<<< HEAD
-=======
 
-	
->>>>>>> c632cf98b730533245d19590fbb63b14a15cd94c
-	// Public Time departureTime;
+
 
 	public int getFlightId() {
 		return flightId;
@@ -95,20 +91,20 @@ public class Flight {
 		this.departureDate = departureDate;
 	}
 
-//	public Executive getExecutive() {
-//		return executive;
-//	}
-//
-//	public void setExecutive(Executive executive) {
-//		this.executive = executive;
-//	}
-//
-//	public Airline getAirline() {
-//		return airline;
-//	}
-//
-//	public void setAirline(Airline airline) {
-//		this.airline = airline;
-//	}
+	public Executive getExecutive() {
+		return executive;
+	}
+
+	public void setExecutive(Executive executive) {
+		this.executive = executive;
+	}
+
+	public Airline getAirline() {
+		return airline;
+	}
+
+	public void setAirline(Airline airline) {
+		this.airline = airline;
+	}
 
 }
