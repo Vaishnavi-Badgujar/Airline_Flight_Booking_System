@@ -1,5 +1,6 @@
 package com.AirlineFlight.api.controller;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.AirlineFlight.api.Service.AirlineService;
 import com.AirlineFlight.api.Service.ExecutiveService;
+
 import com.AirlineFlight.api.Service.FlightService;
 import com.AirlineFlight.api.model.Airline;
 import com.AirlineFlight.api.model.Executive;
@@ -100,15 +103,26 @@ public class FlightController {
 		flightService.deleteFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is Deleted");
 	}
+<<<<<<< HEAD
 
 	// Bussiness API
 	// Get Flight By AirlineId
 
+=======
+	
+	
+	/* Business Apis */
+	
+	
+	// 1. Get Flight by AirlineId
+	
+>>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
 	@GetMapping("/airline/{aid}")
 	public List<Flight> getFlightByAirlineId(@PathVariable("aid") int aid) {
 		List<Flight> list = flightService.getFlightByAirlineId(aid);
 		return list;
 	}
+<<<<<<< HEAD
 
 	// Get flight DepartureAndSource
 	@GetMapping("/departureCity/arrivalCity/{departureCity}/{arrivalCity}")
@@ -128,3 +142,48 @@ public class FlightController {
 }
 
   
+=======
+	
+	// 2. Get Flight by DepartureCity and ArrivalCity
+	
+	@GetMapping("/departureCity/arrivalCity/{departureCity}/{arrivalCity}")
+	public List<Flight> getFlightByDepartureCityAndArrivalCity(
+			@PathVariable("departureCity") String departureCity,
+			@PathVariable("arrivalCity") String arrivalCity) {
+				List<Flight> list = flightService.getFlightByDepartureCityAndArrivalCity(departureCity, arrivalCity);
+				return list;
+				}
+	
+	
+	// 3. Get Flight by DepartureCity, ArrivalCity, DepartureDate
+	
+	@GetMapping("/departureCity/arrivalCity/departureDate/{departureCity}/{arrivalCity}/{departureDate}")
+	public List<Flight> getFlightByDepartureAndArrivalAndDepartureDate(
+			@PathVariable("departureCity") String departureCity,
+			@PathVariable("arrivalCity") String arrivalCity,
+			@PathVariable("departureDate") Date departureDate){
+				List<Flight> list = flightService.getFlightByDepartureAndArrivalAndDepartureDate(departureCity, arrivalCity, departureDate);
+				return list;
+	}
+	
+	//4. Get Flight by AirlineName
+	
+	 @GetMapping("/AirlineName/{AName}")
+	 	public List<Flight> getFlightByAirlineName(@PathVariable("AName") String AName) {
+		 List<Flight> list = flightService.getFlightByAirlineName(AName);
+		 return list;
+	 	}
+	 
+	 
+//	 // 5. Get Flight by Flyer ID
+//	 
+//	 @GetMapping("/FlightId/{flyerId}")
+//	 public List<Flight> getFlightByFlyerId(@PathVariable("flyerId") int flyerId){
+//		 List<Flight> list = flightService.getFlightByFlyerId(flyerId);
+//		 return list;
+//	 }
+}	
+	
+
+	
+>>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
