@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,67 +31,32 @@ public class FlyerFlightController {
 	private FlightService flightService;
 
 	@Autowired
-	private FlyerFlightService flyerflightService;
+	private FlyerFlightService flyerFlightService;
 
 	@PostMapping("/add/{flyerId}/{flightId}")
-	public ResponseEntity<String> assignFlyerToFlight(@RequestBody FlyerFlight flyerFlight,
-													@PathVariable("flyerId") int flyerId, 
-													@PathVariable("flightId") int flightId) {
-		
-		Optional<Flyer> optionalFlyer = flyerService.getFlyerByID(flyerId);
-
+	public ResponseEntity<String> assignFlightToFlyer(@RequestBody FlyerFlight flyerFlight,
+			@PathVariable("flyerId") int flyerId, @PathVariable("flightId") int flightId) {
+		Optional<Flyer> optionalFlyer = flyerService.getflyerById(flyerId);
 		if (!optionalFlyer.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Flyer ID Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("entered invalid flyerId");
 
 		Optional<Flight> optionalFlight = flightService.getFlightById(flightId);
-
 		if (!optionalFlight.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Flight ID Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("entered invalid flightId");
 
-		Flight flight = optionalFlight.get();
 		Flyer flyer = optionalFlyer.get();
+		Flight flight = optionalFlight.get();
 
-		flyerFlight.setFlight(flight);
 		flyerFlight.setFlyer(flyer);
+		flyerFlight.setFlight(flight);
 
-		flyerflightService.assign(flyerFlight);
-		return ResponseEntity.status(HttpStatus.OK).body("Flight assigned to Flyer");
+		flyerFlightService.assign(flyerFlight);
+		return ResponseEntity.status(HttpStatus.OK).body("flight is assigned to flyer");
 
 	}
-@GetMapping("/allFlyerFlight")
-public List<FlyerFlight> getAllFlyerFlight(){
-	List<FlyerFlight> list=flyerflightService.getAllFlyerFlight();
-	return list;
-}
-//get flyer flight by id
-@GetMapping("/one/{flyerflightId}")
-public ResponseEntity<Object> getFlyerFlightById(@PathVariable("flyerflightId") int flyerflightId){
-	Optional<FlyerFlight> optional= flyerflightService.getFlyerFlightById(flyerflightId);
-	if(!optional.isPresent())
-	
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
-	FlyerFlight flyerflight = optional.get();
-	return ResponseEntity.status(HttpStatus.OK).body(flyerflight);
-	}
-
-//get flyer by flightId
-@GetMapping("/flyers/{flyerflightId}")
-public List<Flyer> getFlyerByFlightId(@PathVariable("flyerflightId") int flyerflightId)
-{
-	List<Flyer> list = flyerflightService.getFlyerByFlightId(flyerflightId);
-			return list;
-}
-@DeleteMapping("/delete/{flyerflightId}")
-public ResponseEntity<String> deleteFlyer(@PathVariable("flyerflightId") int flyerflightId)
-{
-	flyerflightService.deleteFlyerFlightById(flyerflightId);
-	return ResponseEntity.status(HttpStatus.OK).body("FlyerFlight deleted"  );
-	
-}
-	//get flight by flyerId
-@GetMapping("/flyer/{flyerId}")
-public List<Flight> getFlightByFlyerId(@PathVariable("flyerId")int flyerId){
-	List<Flight>list= flyerflightService.getFlightByFlyerId(flyerId);
-	return list;
-}
+//	@GetMapping("/allFlyerFlight")
+//	public List<FlyerFlight> getAllFlyerFlight(){
+//		List<FlyerFlight> list = flyerFlightService.getAllFlyerFlight();
+//		return list;
+//	}
 }

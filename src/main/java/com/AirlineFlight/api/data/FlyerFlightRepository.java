@@ -10,6 +10,6 @@ import com.AirlineFlight.api.model.FlyerFlight;
 
 public interface FlyerFlightRepository extends JpaRepository<FlyerFlight, Integer>
 {
-//	 @Query("select  flyerflight.flyer from FlyerFlight flyerflight where  flyerflight.flight.id=?1")
-//	List<Flyer> getByFlightId(int id);
+@Query("select ff.flyer from FlyerFlight ff where ff.flight.id=?1")
+List<Flyer> getByFlightId(int id);
 }

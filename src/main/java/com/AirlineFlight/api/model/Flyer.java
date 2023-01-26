@@ -6,12 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD
+
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-=======
->>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
 
 @Entity
 public class Flyer {
@@ -30,19 +28,15 @@ public class Flyer {
 
 	private String phone;
 
-<<<<<<< HEAD
 	@OneToOne
 	private User user;
 
-	
 	@ManyToOne
 	private Airline airline;
-	
-	
+
 	@ManyToMany
 	private List<Flight> flights;
 
-	
 	public User getUser() {
 		return user;
 	}
@@ -73,14 +67,6 @@ public class Flyer {
 
 	public void setId(int id) {
 		this.id = id;
-=======
-	public int getFlyerId() {
-		return flyerId;
-	}
-
-	public void setFlyerId(int flyerId) {
-		this.flyerId = flyerId;
->>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
 	}
 
 	public String getFirstName() {
@@ -125,11 +111,9 @@ public class Flyer {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
+
 		return "Flyer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
-=======
-		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
->>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
+
 				+ middleName + ", email=" + email + ", phone=" + phone + "]";
 	}
 
