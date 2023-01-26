@@ -2,6 +2,7 @@ package com.AirlineFlight.api.Service;
 
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.AirlineFlight.api.model.Flight;
 
@@ -23,33 +24,59 @@ public class FlightService {
 	private FlightRepository flightRepository;
 
 	public void insertFlight(Flight flight) {
-		// TODO Auto-generated method stub
+		
 		flightRepository.save(flight);
 		
 	}
 
 	public List<Flight> getAllFlight() {
-		// TODO Auto-generated method stub
+		
 		return flightRepository.findAll();
 	}
 
 	public Optional<Flight> getFlightById(int id) {
-		// TODO Auto-generated method stub
+	
 		Optional<Flight> optional = flightRepository.findById(id);
 		return optional;
 	}
 
 	public void updateFlightById(Flight flight) {
-		// TODO Auto-generated method stub
+		
 		flightRepository.save(flight);
 		
 	}
 
 	public void deleteFlightById(Flight flight) {
-		// TODO Auto-generated method stub
+	
 		flightRepository.delete(flight);
 		
 	}
+	
+	public List<Flight> getFlightByAirlineId(int aid) {
+		// Fetch all flights from the DB 
+		 List<Flight> list = flightRepository.findAll();
+		 List<Flight> filteredList = list.stream().filter(e->e.getAirline().getId() == aid).collect(Collectors.toList());
+		 return filteredList;
+   }
+	//Fetch flight by departureCity & arrivalCity
+	public List<Flight> getFlightByDepartureCityAndArrivalCity(String departureCity, String arrivalCity){
+		List<Flight> list = flightRepository.findAll();
+		List<Flight> filteredList = list.stream().filter(e->e.getDepartureCity().equals(departureCity)).filter(e->e.getArrivalCity().equals(arrivalCity)).collect(Collectors.toList());
+		return filteredList;
+	}	
+	
+	 //fetch flight by flightName
+	public List<Flight> getFlightByFlightName(String fname) {
+		List<Flight> list = flightRepository.findAll();
+		List<Flight> filteredList =
+				list.stream()
+				.filter(e->e.getFlightName().equals(fname))
+				.collect(Collectors.toList());
+		return filteredList;
+		}
+	
+	
+    	
 
 	
 
