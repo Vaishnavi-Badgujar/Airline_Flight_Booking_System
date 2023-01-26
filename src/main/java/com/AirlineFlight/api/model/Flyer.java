@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,6 +30,23 @@ public class Flyer {
 	private String email;
 
 	private String phone;
+	
+//	@ManyToOne
+//	private Airline airline;
+//	
+//	@ManyToMany
+//	private List<Flight> flight;
+	
+	@OneToOne
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@OneToOne
 	private User user;
@@ -109,6 +129,8 @@ public class Flyer {
 		this.phone = phone;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 

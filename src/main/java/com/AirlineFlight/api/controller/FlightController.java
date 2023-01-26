@@ -30,24 +30,25 @@ import com.AirlineFlight.api.model.Flight;
 public class FlightController {
 	@Autowired
 	private AirlineService airlineService;
-	
+
 	@Autowired
 	private ExecutiveService executiveService;
-	
+
 	@Autowired
 	private FlightService flightService;
-	
+
 	// Flight POST API
-	
+
 	@PostMapping("/add")
 	public ResponseEntity<String> postFlight(@RequestBody Flight flight) {
 		flightService.insertFlight(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight Posted in DB");
-		
+
 	}
-	
+
 	@PostMapping("/add/{aid}/{eid}")
-	public ResponseEntity<String> postFlight(@PathVariable("aid") int aid, @PathVariable("eid") int eid,@RequestBody Flight flight) {
+	public ResponseEntity<String> postFlight(@PathVariable("aid") int aid, @PathVariable("eid") int eid,
+			@RequestBody Flight flight) {
 		Optional<Airline> optionalP = airlineService.getAirlineById(aid);
 		if (!optionalP.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Airline Id");
@@ -65,58 +66,53 @@ public class FlightController {
 		return ResponseEntity.status(HttpStatus.OK).body("Flight added in DB");
 
 	}
-	
+
 	// Flight ADD API
-	
+
 	@GetMapping("/getall")
-	public List<Flight> getAllFlight(){
+	public List<Flight> getAllFlight() {
 		List<Flight> list = flightService.getAllFlight();
 		return list;
 	}
-	
+
 	// Get Flight by ID
-	
+
 	@GetMapping("/one/{flightId}")
 	public ResponseEntity<Object> getFlightById(@PathVariable("flightId") int flightId) {
 		Optional<Flight> optional = flightService.getFlightById(flightId);
 		if (!optional.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid ID given");
-		
+
 		Flight flight = optional.get();
 		return ResponseEntity.status(HttpStatus.OK).body(flight);
 	}
 
-	
-	//put Flight API
-	
+	// put Flight API
+
 	@PutMapping("/one/{flightId}")
-	public ResponseEntity<String> updateFlightById (@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
+	public ResponseEntity<String> updateFlightById(@PathVariable("flightId") int flightId, @RequestBody Flight flight) {
 		flightService.updateFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is updated");
-		}
+	}
 
-	
-	//Delete Flight API
-	
-	
+	// Delete Flight API
+
 	@DeleteMapping("/delete/{flightId}")
-	public ResponseEntity<String> deleteFlightById(@PathVariable("flightId") int flightId,@RequestBody Flight flight) {
+	public ResponseEntity<String> deleteFlightById(@PathVariable("flightId") int flightId, @RequestBody Flight flight) {
 
 		flightService.deleteFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is Deleted");
 	}
-	
-	
-	/* Business Apis */
-	
-	
+
 	// 1. Get Flight by AirlineId
 	
+
 	@GetMapping("/airline/{aid}")
 	public List<Flight> getFlightByAirlineId(@PathVariable("aid") int aid) {
 		List<Flight> list = flightService.getFlightByAirlineId(aid);
 		return list;
 	}
+
 	
 	// 2. Get Flight by DepartureCity and ArrivalCity
 	
@@ -160,3 +156,4 @@ public class FlightController {
 	
 
 	
+

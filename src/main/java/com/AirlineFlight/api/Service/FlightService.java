@@ -21,35 +21,34 @@ public class FlightService {
 	private FlightRepository flightRepository;
 
 	public void insertFlight(Flight flight) {
-		// TODO Auto-generated method stub
+		
 		flightRepository.save(flight);
 		
 	}
 
 	public List<Flight> getAllFlight() {
-		// TODO Auto-generated method stub
+		
 		return flightRepository.findAll();
 	}
 
 	public Optional<Flight> getFlightById(int id) {
-		// TODO Auto-generated method stub
+	
 		Optional<Flight> optional = flightRepository.findById(id);
 		return optional;
 	}
 
 	public void updateFlightById(Flight flight) {
-		// TODO Auto-generated method stub
+		
 		flightRepository.save(flight);
 		
 	}
 
 	public void deleteFlightById(Flight flight) {
-		// TODO Auto-generated method stub
+	
 		flightRepository.delete(flight);
 		
 	}
-
-	
+    		
 	//Buisness API getFlightByAirlineId
 	
 	public List<Flight> getFlightByAirlineId(int aid) {
