@@ -29,12 +29,32 @@ public class FlyerFlight {
 	@ManyToOne
 	private Flyer flyer;
 
+<<<<<<< HEAD
 	@Column(name = "departure_Date")
 	private Date departureDate;
 
 	@Column(name = "couponUsed")
 	private boolean CouponUsed;
 
+=======
+	private int flightId;
+	private int flyerId;
+	private Date departureDate;
+	private boolean CouponUsed;
+
+	public FlyerFlight(int id, Flight flight, Flyer flyer, int flightId, int flyerId, Date departureDate,
+			boolean couponUsed) {
+		super();
+		this.id = id;
+		this.flight = flight;
+		this.flyer = flyer;
+		this.flightId = flightId;
+		this.flyerId = flyerId;
+		this.departureDate = departureDate;
+		CouponUsed = couponUsed;
+	}
+
+>>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
 	public int getId() {
 		return id;
 	}
@@ -59,6 +79,25 @@ public class FlyerFlight {
 		this.flyer = flyer;
 	}
 
+<<<<<<< HEAD
+=======
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
+	}
+
+	public int getFlyerId() {
+		return flyerId;
+	}
+
+	public void setFlyerId(int flyerId) {
+		this.flyerId = flyerId;
+	}
+
+>>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
 	public Date getDepartureDate() {
 		return departureDate;
 	}
@@ -75,6 +114,7 @@ public class FlyerFlight {
 		CouponUsed = couponUsed;
 	}
 
+<<<<<<< HEAD
 	public TicketStatus getStatus() {
 
 		return status;
@@ -84,4 +124,6 @@ public class FlyerFlight {
 		this.status = status;
 	}
 
+=======
+>>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
 }
