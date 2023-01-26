@@ -1,6 +1,7 @@
 package com.AirlineFlight.api.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,9 @@ public class FlyerFlightService {
 	public List<Flight> getFlightByFlyerId(int flyerId) {
 		// TODO Auto-generated method stub
 		List<FlyerFlight> list= flyerFlightRepository.findAll();
-		List<Flight> filteredlist=(List<Flight>) list.stream().filter(e->e.getFlyer().getId()==flyerId);
+	
+		List<Flight> filteredlist= list.stream().filter(e->e.getFlyer().getId()==flyerId).map(e->e.getFlight())
+				.collect(Collectors.toList());
 		return filteredlist;
 	}
 
@@ -52,7 +55,7 @@ public class FlyerFlightService {
 	public List<Flyer> getFlyerByFlightId(int flightId) {
 		// TODO Auto-generated method stub
 		List<FlyerFlight> list = flyerFlightRepository.findAll();
-		List<Flyer> filteredlist =   (List<Flyer>) list.stream();
+		List<Flyer> filteredlist =    list.stream().filter(e->e.getFlight().getId()==flightId).map(e->e.getFlyer()).collect(Collectors.toList());
 		return filteredlist;
 	}
 

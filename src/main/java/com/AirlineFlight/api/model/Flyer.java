@@ -1,35 +1,74 @@
 package com.AirlineFlight.api.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Flyer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int flyerId;
+	private int id;
 
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String middleName;
-	
+
 	private String email;
-	
+
 	private String phone;
 
+	@OneToOne
+	private User user;
+
 	
-	public int getId() {
-		return flyerId;
+	@ManyToOne
+	private Airline airline;
+	
+	
+	@ManyToMany
+	private List<Flight> flights;
+
+	
+	public User getUser() {
+		return user;
 	}
 
-	public void setId(int flyerId) {
-		this.flyerId = flyerId;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Airline getAirline() {
+		return airline;
+	}
+
+	public void setAirline(Airline airline) {
+		this.airline = airline;
+	}
+
+	public List<Flight> getFlights() {
+		return flights;
+	}
+
+	public void setFlights(List<Flight> flights) {
+		this.flights = flights;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -72,17 +111,10 @@ public class Flyer {
 		this.phone = phone;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Flyer [flyerId=" + flyerId + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName
-				+ ", email=" + email + ", phone=" + phone + "]";
+		return "Flyer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleName="
+				+ middleName + ", email=" + email + ", phone=" + phone + "]";
 	}
-
-	
-
-
-	
 
 }

@@ -22,7 +22,7 @@ import com.AirlineFlight.api.model.Flyer;
 import com.AirlineFlight.api.model.FlyerFlight;
 
 @RestController
-@RequestMapping("/api/flight/flyer")
+@RequestMapping("/api/flyer/flight")
 public class FlyerFlightController {
 
 	@Autowired
@@ -34,19 +34,20 @@ public class FlyerFlightController {
 	@Autowired
 	private FlyerFlightService flyerflightService;
 
-	@PostMapping("/add/{flightId}/{flyerId}")
+	@PostMapping("/add/{flyerId}/{flightId}")
 	public ResponseEntity<String> assignFlyerToFlight(@RequestBody FlyerFlight flyerFlight,
-													@PathVariable("flightId") int flightId, 
-													@PathVariable("flyerId") int flyerId) {
-		Optional<Flight> optionalFlight = flightService.getFlightById(flightId);
-
-		if (!optionalFlight.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Flight ID Given");
-
+													@PathVariable("flyerId") int flyerId, 
+													@PathVariable("flightId") int flightId) {
+		
 		Optional<Flyer> optionalFlyer = flyerService.getFlyerByID(flyerId);
 
 		if (!optionalFlyer.isPresent())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Flyer ID Given");
+
+		Optional<Flight> optionalFlight = flightService.getFlightById(flightId);
+
+		if (!optionalFlight.isPresent())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Flight ID Given");
 
 		Flight flight = optionalFlight.get();
 		Flyer flyer = optionalFlyer.get();
