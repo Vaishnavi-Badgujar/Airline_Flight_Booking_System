@@ -103,46 +103,16 @@ public class FlightController {
 		flightService.deleteFlightById(flight);
 		return ResponseEntity.status(HttpStatus.OK).body("Flight is Deleted");
 	}
-<<<<<<< HEAD
 
-	// Bussiness API
-	// Get Flight By AirlineId
-
-=======
-	
-	
-	/* Business Apis */
-	
-	
 	// 1. Get Flight by AirlineId
 	
->>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
+
 	@GetMapping("/airline/{aid}")
 	public List<Flight> getFlightByAirlineId(@PathVariable("aid") int aid) {
 		List<Flight> list = flightService.getFlightByAirlineId(aid);
 		return list;
 	}
-<<<<<<< HEAD
 
-	// Get flight DepartureAndSource
-	@GetMapping("/departureCity/arrivalCity/{departureCity}/{arrivalCity}")
-	public List<Flight> getflightDepartureAndSource(@PathVariable("departureCity") String departureCity,
-			@PathVariable("arrivalCity") String arrivalCity) {
-		List<Flight> list = flightService.getFlightByDepartureCityAndArrivalCity(departureCity, arrivalCity);
-		return list;
-	}
-
-	// Get Flight By FlyerId
-	@GetMapping("/flightName/{fname}")
-	 public List<Flight> getFlightByFlyerId(@PathVariable("fname") String fname) {
-		 List<Flight> list = flightService.getFlightByFlightName(fname);
-		 return list;
-	}
-
-}
-
-  
-=======
 	
 	// 2. Get Flight by DepartureCity and ArrivalCity
 	
@@ -186,4 +156,4 @@ public class FlightController {
 	
 
 	
->>>>>>> 53a23c4f7246003ec00b109c2a4aac7fb978cfe7
+

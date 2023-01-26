@@ -48,34 +48,7 @@ public class FlightService {
 		flightRepository.delete(flight);
 		
 	}
-	
-	public List<Flight> getFlightByAirlineId(int aid) {
-		// Fetch all flights from the DB 
-		 List<Flight> list = flightRepository.findAll();
-		 List<Flight> filteredList = list.stream().filter(e->e.getAirline().getId() == aid).collect(Collectors.toList());
-		 return filteredList;
-   }
-	//Fetch flight by departureCity & arrivalCity
-	public List<Flight> getFlightByDepartureCityAndArrivalCity(String departureCity, String arrivalCity){
-		List<Flight> list = flightRepository.findAll();
-		List<Flight> filteredList = list.stream().filter(e->e.getDepartureCity().equals(departureCity)).filter(e->e.getArrivalCity().equals(arrivalCity)).collect(Collectors.toList());
-		return filteredList;
-	}	
-	
-	 //fetch flight by flightName
-	public List<Flight> getFlightByFlightName(String fname) {
-		List<Flight> list = flightRepository.findAll();
-		List<Flight> filteredList =
-				list.stream()
-				.filter(e->e.getFlightName().equals(fname))
-				.collect(Collectors.toList());
-		return filteredList;
-		}
-	
-	
-    	
-
-	
+    		
 	//Buisness API getFlightByAirlineId
 	
 	public List<Flight> getFlightByAirlineId(int aid) {

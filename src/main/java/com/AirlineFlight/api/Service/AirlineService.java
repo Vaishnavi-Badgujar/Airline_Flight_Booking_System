@@ -26,10 +26,13 @@ public class AirlineService {
 		 return airlineRepository.findAll();
 	 }
 
-	 public Optional<Airline> getAirlineById(int id) {
-		 Optional<Airline> optional = airlineRepository.findById(id);
-		// TODO Auto-generated method stub
-		return optional;
+	 public Optional<Airline> getAirlineById(int aid) {
+		 Optional<Airline> optional = airlineRepository.findById(aid);
+		 if(optional!= null)
+			 return optional;
+		 
+	
+		return null;
 	 }
 	 
 	 public void updateAirlineById(Airline airline) {
