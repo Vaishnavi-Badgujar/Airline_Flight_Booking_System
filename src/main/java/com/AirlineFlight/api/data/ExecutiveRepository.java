@@ -1,3 +1,4 @@
+
 package com.AirlineFlight.api.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;

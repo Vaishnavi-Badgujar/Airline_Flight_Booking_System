@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,9 +55,40 @@ public class FlyerFlightController {
 		return ResponseEntity.status(HttpStatus.OK).body("flight is assigned to flyer");
 
 	}
-//	@GetMapping("/allFlyerFlight")
-//	public List<FlyerFlight> getAllFlyerFlight(){
-//		List<FlyerFlight> list = flyerFlightService.getAllFlyerFlight();
-//		return list;
-//	}
+	@GetMapping("/allFlyerFlight")
+	public List<FlyerFlight> getAllFlyerFlight(){
+		List<FlyerFlight> list = flyerFlightService.getAllFlyerFlight();
+		return list;
+	}
+	//get flyer flight by id
+	@GetMapping("/one/{flyerflightId}")
+	public ResponseEntity<Object> getFlyerFlightById(@PathVariable("flyerflightId") int flyerflightId){
+		Optional<FlyerFlight> optional= flyerFlightService.getFlyerFlightById(flyerflightId);
+		if(!optional.isPresent())
+		
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Id Given");
+		FlyerFlight flyerflight = optional.get();
+		return ResponseEntity.status(HttpStatus.OK).body(flyerflight);
+		}
+
+	//get flyer by flightId
+	@GetMapping("/flyers/{flightId}")
+	public List<Flyer> getFlyerByFlightId(@PathVariable("flightId") int flyerflightId)
+	{
+		List<Flyer> list = flyerFlightService.getFlyerByFlightId(flyerflightId);
+				return list;
+	}
+	@DeleteMapping("/delete/{flyerflightId}")
+	public ResponseEntity<String> deleteFlyer(@PathVariable("flyerflightId") int flyerflightId)
+	{
+		flyerFlightService.deleteFlyerFlightById(flyerflightId);
+		return ResponseEntity.status(HttpStatus.OK).body("FlyerFlight deleted"  );
+		
+	}
+		//get flight by flyerId
+	@GetMapping("/flyer/{flyerId}")
+	public List<Flight> getFlightByFlyerId(@PathVariable("flyerId")int flyerflightId){
+		List<Flight>list= flyerFlightService.getFlightByFlyerId(flyerflightId);
+		return list;
+	}
 }

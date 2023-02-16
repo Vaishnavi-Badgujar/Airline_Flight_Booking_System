@@ -31,22 +31,9 @@ public class Flyer {
 
 	private String phone;
 	
-//	@ManyToOne
-//	private Airline airline;
-//	
-//	@ManyToMany
-//	private List<Flight> flight;
 	
-	@OneToOne
-	private User user;
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 
 	@OneToOne
 	private User user;
@@ -54,32 +41,16 @@ public class Flyer {
 	@ManyToOne
 	private Airline airline;
 
-	@ManyToMany
-	private List<Flight> flights;
+//	@ManyToMany
+//	private List<Flight> flights;
 
-	public User getUser() {
-		return user;
-	}
+//	public List<Flight> getFlights() {
+//		return flights;
+//	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Airline getAirline() {
-		return airline;
-	}
-
-	public void setAirline(Airline airline) {
-		this.airline = airline;
-	}
-
-	public List<Flight> getFlights() {
-		return flights;
-	}
-
-	public void setFlights(List<Flight> flights) {
-		this.flights = flights;
-	}
+//	public void setFlights(List<Flight> flights) {
+//		this.flights = flights;
+//	}
 
 	public int getId() {
 		return id;
@@ -95,6 +66,22 @@ public class Flyer {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Airline getAirline() {
+		return airline;
+	}
+
+	public void setAirline(Airline airline) {
+		this.airline = airline;
 	}
 
 	public String getLastName() {

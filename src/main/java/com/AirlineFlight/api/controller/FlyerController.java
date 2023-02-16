@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.AirlineFlight.api.Service.AirlineService;
 import com.AirlineFlight.api.Service.FlyerService;
+import com.AirlineFlight.api.Service.MyUserDetailsService;
 import com.AirlineFlight.api.data.UserRepository;
+import com.AirlineFlight.api.model.Airline;
 import com.AirlineFlight.api.model.Flyer;
 import com.AirlineFlight.api.model.User;
 
@@ -25,7 +28,8 @@ import com.AirlineFlight.api.model.User;
 @RestController
 @RequestMapping("/api/flyer")
 public class FlyerController {
-	
+	@Autowired
+	private AirlineService airlineService;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -35,6 +39,31 @@ public class FlyerController {
 	
 	@Autowired
 	private FlyerService flyerService;
+	
+	
+	@Autowired
+	private MyUserDetailsService myUserDetailsService;
+	
+	
+@PostMapping("/add/{aid}/{uid}")
+public ResponseEntity<String> postFlyer(@PathVariable("aid") int aid, @PathVariable("uid") int uid,
+			@RequestBody Flyer flyer)
+{
+Optional<Airline> optionalA = airlineService.getAirlineById(aid);
+ if (!optionalA.isPresent())
+	 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Airline Id");
+	 Optional<User> optionalU = myUserDetailsService.getUserById(uid);
+	if (!optionalU.isPresent())
+return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid User Id");
+ Airline airline = optionalA.get();
+	 User user = optionalU.get();
+	flyer.setUser(user);
+	flyer.setAirline(airline);
+	flyerService.insertFlyer(flyer);
+return ResponseEntity.status(HttpStatus.OK).body("Flyer added in DB");
+}
+
+
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> postFlyer(@RequestBody Flyer flyer){

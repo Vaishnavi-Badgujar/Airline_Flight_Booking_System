@@ -39,7 +39,7 @@ public class FlyerFlight {
 	
 
 
-	public FlyerFlight(int id, Flight flight, Flyer flyer, TicketStatus status, boolean couponUsed,
+	public FlyerFlight(int id, Flight flight, Flyer flyer, boolean couponUsed,
 			Date departureDate) {
 		super();
 		this.id = id;
@@ -86,9 +86,9 @@ public class FlyerFlight {
 
 
 
-	public void setStatus(TicketStatus status) {
-		this.status = status;
-	}
+public void setStatus(TicketStatus status) {
+	this.status = status;
+}
 
 
 

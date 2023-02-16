@@ -2,6 +2,7 @@ package com.AirlineFlight.api.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,6 +36,18 @@ public class MyUserDetailsService implements UserDetailsService{
 				org.springframework.security.core.userdetails.User
 				(user.getUsername(),user.getPassword(),list);
 		return springUser;
+	}
+
+	public Optional<User> getUserById(int uid) {
+		// TODO Auto-generated method stub
+		Optional<User> optional = userRepository.findById(uid);
+		
+			if(optional!=null)
+			{
+				return optional;
+			}
+		
+		return null;
 	}
 	
 	
